@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudra - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-react@0.292.0/dist/lucide-react.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .hero-gradient {
+            background: radial-gradient(ellipse at top, #1e3a8a, #0a0a0a 70%);
+        }
+        .contact-gradient {
+            background: radial-gradient(ellipse at bottom, #1e3a8a, #0a0a0a 70%);
+        }
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skill-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(30, 64, 138, 0.3), 0 4px 6px -2px rgba(30, 64, 138, 0.2);
+        }
+        nav a {
+            position: relative;
+            transition: color 0.3s;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6;
+            transition: width 0.3s;
+        }
+        nav a:hover {
+            color: #3b82f6;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-black bg-opacity-50 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-white">Rudra</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-slate-300">Home</a>
+                    <a href="#about" class="text-slate-300">About</a>
+                    <a href="#skills" class="text-slate-300">Skills</a>
+                    <a href="#projects" class="text-slate-300">Projects</a>
+                    <a href="#contact" class="text-slate-300">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#home" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Home</a>
+                <a href="#about" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">About</a>
+                <a href="#skills" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Skills</a>
+                <a href="#projects" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Projects</a>
+                <a href="#contact" class="block py-2 px-4 text-sm text-slate-300 hover:bg-slate-800 rounded">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center hero-gradient pt-20">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                        Aspiring Data Analyst & Tech Enthusiast
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-400 mb-8">
+                        A 3rd-year B.Tech student at IMSEC, passionate about uncovering insights from data and building efficient software solutions.
+                    </p>
+                    <div class="flex justify-center gap-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">Get In Touch</a>
+                        <a href="#skills" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">View Skills</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-32 animated-section">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto grid md:grid-cols-5 gap-10 items-center">
+                    <div class="md:col-span-2">
+                        <img src="My Image.jpg" alt="Rudra's profile picture" class="rounded-full mx-auto md:mx-0 w-48 h-48 md:w-full md:h-auto border-4 border-slate-800 shadow-lg">
+                    </div>
+                    <div class="md:col-span-3 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
+                        <p class="text-slate-400 mb-4">
+                            Hello! I'm Rudra, a dedicated B.Tech student currently in my third year at IMS Engineering College (IMSEC). My journey in technology is driven by a fascination with data and its power to tell stories and drive decisions.
+                        </p>
+                        <p class="text-slate-400">
+                            I thrive on challenges and am constantly exploring new technologies. My core interest lies in data analytics, where I enjoy transforming complex datasets into clear, actionable insights. I'm proficient in tools like Power BI and SQL, and I'm always eager to learn more and apply my skills to real-world problems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 md:py-32 bg-black bg-opacity-20 animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Technical Skills</h2>
+                    <p class="text-slate-400 mt-2">A snapshot of the technologies I work with.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+                    <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                           <span class="text-3xl font-bold text-blue-400">C++</span>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">C++ Language</h3>
+                    </div>
+                    <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.33,3.31C14.49,3.09 14.71,3 14.93,3H17.5A0.5,0.5 0 0,1 18,3.5V6.07C18,6.29 18.09,6.51 18.27,6.67L21,9V10.5C21,10.78 20.78,11 20.5,11H18.93C18.71,11 18.49,11.09 18.33,11.27L15,15L18.33,18.73C18.49,18.91 18.71,19 18.93,19H20.5A0.5,0.5 0 0,1 21,19.5V21H18.5A0.5,0.5 0 0,1 18,20.5V17.93C18,17.71 17.91,17.49 17.73,17.33L15,15H9L6.27,17.73C6.09,17.91 6,18.13 6,18.35V20.5A0.5,0.5 0 0,1 5.5,21H3V19.5A0.5,0.5 0 0,1 3.5,19H5.07C5.29,19 5.51,18.91 5.67,18.73L9,15L5.67,11.27C5.51,11.09 5.29,11 5.07,11H3.5A0.5,0.5 0 0,1 3,10.5V9H5.5A0.5,0.5 0 0,1 6,9.5V6.93C6,6.71 6.09,6.49 6.27,6.33L9,3H9.67L12.5,3H14.07C14.18,3 14.27,3.08 14.33,3.19V3.31M15,5H12V8H9V12H12V15H15V12H18V8H15V5Z" /></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">Python</h3>
+                    </div>
+                    <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2,12.5C2,12.22 2.22,12 2.5,12H6V2H2.5A0.5,0.5 0 0,0 2,2.5V12.5M2,19.5A0.5,0.5 0 0,0 2.5,20H6V14H2V19.5M15,20H19.5A0.5,0.5 0 0,0 20,19.5V17H15V20M8,20H13V11H8V20M20,15V2.5A0.5,0.5 0 0,0 19.5,2H8V9H20V15Z" /></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">Power BI</h3>
+                    </div>
+                    <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                           <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">Data Analytics</h3>
+                    </div>
+                     <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                           <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21.17,3.25Q21.5,3.25 21.76,3.5Q22,3.75 22,4.08V19.92Q22,20.25 21.76,20.5Q21.5,20.75 21.17,20.75H2.83Q2.5,20.75 2.24,20.5Q2,20.25 2,19.92V4.08Q2,3.75 2.24,3.5Q2.5,3.25 2.83,3.25H21.17M12.05,17H15.05L12.8,13.23L15,9.5H12.1L10.5,12.15L8.9,9.5H6L8.23,13.2L6,17H9L10.5,14.13L12.05,17Z" /></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">Excel</h3>
+                    </div>
+                    <div class="skill-card bg-slate-900/50 p-6 rounded-lg text-center border border-slate-800">
+                        <div class="flex justify-center items-center h-16 w-16 bg-slate-800 rounded-full mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H8V10H11V12H8V14H11V16H6V18H13A2,2 0 0,0 15,16V13A2,2 0 0,0 13,11H13A2,2 0 0,0 15,9V6A2,2 0 0,0 13,4H6V6H11M17,14V16H16V18H18V13H16V11H18V12A1,1 0 0,1 19,13V17A1,1 0 0,1 18,18H16" /></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg text-white">SQL</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 md:py-32 animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Projects</h2>
+                    <p class="text-slate-400 mt-2">Data-driven projects I've worked on.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <a href="https://github.com/Rudra-005/Ola-Booking-Cancellation-Data-Analysis.git" target="_blank" class="project-card block bg-slate-900/50 p-8 rounded-lg border border-slate-800 text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.5L7.75 4.5 10 3h4l2.25 1.5 2.25-1.5H20a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-2">OLA Bookings Cancellation Data Analysis</h3>
+                        <p class="text-slate-400">Analyzed OLA booking data to identify key factors leading to cancellations and provided actionable insights.</p>
+                        <div class="flex justify-center items-center mt-4 text-blue-400 font-semibold">
+                            <span class="mr-2">View on GitHub</span>
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Rudra-005/Hotel-Bookings-And-Cancellations-.git" target="_blank" class="project-card block bg-slate-900/50 p-8 rounded-lg border border-slate-800 text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path><line x1="12" y1="10" x2="12" y2="10"></line></svg>
+                        </div>
+                        <h3 class="font-bold text-xl text-white mb-2">Hotels Bookings and Cancellations</h3>
+                        <p class="text-slate-400">A detailed analysis of hotel booking data to predict cancellations and optimize business strategies.</p>
+                        <div class="flex justify-center items-center mt-4 text-blue-400 font-semibold">
+                            <span class="mr-2">View on GitHub</span>
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 md:py-32 contact-gradient animated-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Get in Touch</h2>
+                    <p class="text-slate-400 mt-2">I'm open to collaborations and new opportunities. Feel free to reach out!</p>
+                </div>
+                <div class="max-w-md mx-auto bg-slate-900/50 p-8 rounded-lg border border-slate-800 shadow-xl">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 flex-shrink-0 bg-slate-800 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">Email</p>
+                                <a href="mailto:singh005rudra@gmail.com" class="text-white font-semibold hover:text-blue-400 transition-colors">singh005rudra@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 flex-shrink-0 bg-slate-800 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/rudra-pratap-singh-02630a309" target="_blank" class="text-white font-semibold hover:text-blue-400 transition-colors">linkedin.com/in/rudra-pratap-singh-02630a309</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 flex-shrink-0 bg-slate-800 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">GitHub</p>
+                                <a href="https://github.com/Rudra-005" target="_blank" class="text-white font-semibold hover:text-blue-400 transition-colors">github.com/Rudra-005</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black py-6">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p>&copy; 2024 Rudra. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // Scroll animations
+        const animatedSections = document.querySelectorAll('.animated-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedSections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
